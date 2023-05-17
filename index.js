@@ -6,13 +6,15 @@ const PORT = process.env.PORT || 8080
 const server = http.createServer()
 // We define a function that runs in response a request event
 server.on("request", (request, response) => {
-  // handle request based on method then URL
+  
+    const id = request.params.id
+
+
+
   response.statusCode = 200
-  response.write("Hello World")
+  response.write(`we got this id ${id}`) 
   response.end()
 })
-// get the server to start listening
 server.listen(PORT, err => {
-  // error checking
   err ? console.error(err) : console.log(`listening on port ${PORT}`)
 })
