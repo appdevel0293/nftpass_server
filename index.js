@@ -1,14 +1,16 @@
-// Import http library
 const http = require("http")
-// use env variable to define tcp/ip port with a default
 const PORT = process.env.PORT || 8080
-//create our server object
 const server = http.createServer()
-// We define a function that runs in response a request event
+const url = require('url');
+const querystring = require('querystring');
+
+
+
 server.on("request", (request, response) => {
   
-    const id = request.params.id
-
+    const parsedUrl = url.parse(request.url);
+    const queryParams = querystring.parse(parsedUrl.query);
+    const id = queryParams.id;
 
 
   response.statusCode = 200
