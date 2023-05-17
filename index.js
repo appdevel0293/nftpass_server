@@ -23,7 +23,7 @@ app.get('/setVerified', async (req, res) => {
       to: CONTRACT_ADDRESS,
       gasLimit: web3.utils.toHex(8000000),
       gasPrice: web3.utils.toHex(web3.utils.toWei('3', 'gwei')),
-      data: contract.methods.setVerified(0, parseInt(id), false).encodeABI(),
+      data: contract.methods.setVerified(0, parseInt(id), true).encodeABI(),
     };
 
     txObject.gasProvider = new Web3.providers.HttpProvider(QUICKNODERPC);
